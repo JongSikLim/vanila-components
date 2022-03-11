@@ -1,4 +1,5 @@
 import { Dashboard, Detail } from "./components/index.js";
+import NotFound from "./components/NotFound.js";
 
 const ROUTE_CHANGE_EVENT = 'ROUTE_CHANGE';
 
@@ -38,6 +39,9 @@ export default function routes({ $target }) {
 
     $page.className = 'router-container';
 
+    /**
+     * 라우팅 분기 처리
+     */
     switch (pathname) {
         case '/':
             new Dashboard({ $target: $page });
@@ -46,6 +50,7 @@ export default function routes({ $target }) {
             new Detail({ $target: $page });
             break;
         default:
+            new NotFound({ $target: $page })
             break;
     }
 
